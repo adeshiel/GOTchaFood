@@ -2,17 +2,19 @@ import requests
 import config
 import json
 
+def ingredient_init():
+        with open('ingredients.json', 'r') as ingred:
+                ingredi = json.load(ingred)
+        return ingredi.keys()
+
 def store_json(unit_test, string):
     with open(string, 'w') as outfile:
         json.dump(unit_test, outfile)
-def init_query():
+def usr_input_query(ingredient):
         base_uri = "https://api.edamam.com/"
         search_query = "search?q="
-        response = input("what'cha want m8?: ").replace(' ', '%20')
-        url = base_uri + search_query + response + "&to=1" +"&app_id=" + config.APP_ID + "&app_key=" + config.RECIPE_SEARCH_APP_KEY
+        url = base_uri + search_query + ingredient + "&to=5" +"&app_id=" + config.APP_ID + "&app_key=" + config.RECIPE_SEARCH_APP_KEY
         request = requests.get(url)
-        print(str(request.status_code) + "\n")
-        print(url)
         ret = request.json()
         store_json(ret, 'raw_query.json')
 def retrieve_json(string):
@@ -28,7 +30,7 @@ def parse_dic(dic):
         for x in hits:
                 json_dic = {}
                 recipe = x['recipe']
-                print("test", recipe )
+                print("test", dic['q'] )
                 json_dic = { "name": recipe['label'], "img": recipe['image'], "ing": recipe['ingredientLines'], 'url': recipe['url']}
                 all_dic[dic['q']].append(json_dic)
         try:
@@ -40,8 +42,12 @@ def parse_dic(dic):
                 return superset
         except:
                 return all_dic
-init_query()
-dic = retrieve_json('raw_query.json')
-parsed_dic = parse_dic(dic)
-store_json(parsed_dic, 'parsed_dic.json')
-
+def main():
+        # usr_input_query()
+        ingrid = ingredient_init()
+        for x in ingrid:
+                usr_input_query(x)
+                dic = retrieve_json('raw_query.json')
+                parsed_dic = parse_dic(dic)
+                store_json(parsed_dic, 'parsed_dic.json')
+main()
