@@ -16,7 +16,8 @@ public class ButtonTesting : MonoBehaviour {
 	}
 
 	public void GACHA () {
-		float val =  Random.value;
+		float val = Random.value;
+		KeepProb.probList.Add(val);
 		GameObject.Find("GachaResult").GetComponent<Text>().text = "You've been Gacha'd: " + val;
 		// Debug.Log("You've been Gacha'd: " + Random.value);
 	}
