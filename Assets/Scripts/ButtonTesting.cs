@@ -30,20 +30,24 @@ public class ButtonTesting : MonoBehaviour {
 		itemsL.Add(i2);
 		itemsL.Add(i3);
 		var chosen = "";
-		// RecItem chosen;
+
+		int Normind = Random.Range(0, itemsL.Count);
+				// RecItem chosen;
 
 		RecItem[] items = itemsL.ToArray();
 		// RecItem items = []
-		for(int i = 0; i < items.Length; i++){
-			chosen = items[i].name;
-			if (items[i].pullprob < val){
-				if (KeepProb.foodnames.Contains(items[i].name) == false){
-					KeepProb.foods.Add(items[i]);
-					KeepProb.foodnames.Add(items[i].name);
-					break;
-				}
-			}
+		// for(int i = 0; i < items.Length; i++){
+			// double end = 1.0 - items[i].pullprob;
+			// if (items[Normind].pullprob <= val ){
+		chosen = items[Normind].name;
+			// }
+		if (KeepProb.foodnames.Contains(chosen) == false){
+			KeepProb.foods.Add(items[Normind]);
+			KeepProb.foodnames.Add(chosen);
+			// break;
 		}
+			// }
+		// }
 
 		// KeepProb.probList.Add(val);
 
