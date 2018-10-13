@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class InventoryItems : MonoBehaviour {
 	Dropdown f_Dropdown;
+	List<string> headers = new List<string>(){"asparagus", "baking-powder", "bananas", "basil", "broccoli", "butter", "chilli", "chocolate", "clementines", "coconut-milk", "coffee-powder", "couscous", "creme-fraiche", "dip", "eggs", "falafels", "fish-sauce", "flour", "garlic", "lemon-grass", "lettuce", "lime", "lime-juice", "lime-leaves", "marinade", "mushrooms", "onions", "oregano", "pepper", "pomegranate", "prawns", "salmon", "stock", "sugar", "tom-yum-paste", "tomatoes", "vanilla", "vinegar", "water", "yoghurt"};
 	// Use this for initialization
 	void Start () {
 		var current_list = KeepProb.foods.ToArray();
