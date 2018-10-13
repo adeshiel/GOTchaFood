@@ -5,30 +5,43 @@ import json
 def store_json(unit_test, string):
     with open(string, 'w') as outfile:
         json.dump(unit_test, outfile)
-
-# base_uri = "https://api.edamam.com/"
-# search_query = "search?q="
-# response = input("what'cha want m8?: ").split()[0]
-# url = base_uri + search_query + response + "&to=3" +"&app_id=" + config.APP_ID + "&app_key=" + config.RECIPE_SEARCH_APP_KEY
-# request = requests.get(url)
-# print(str(request.status_code) + "\n")
-# print(url)
-# ret = request.json()
-# store_json(ret, 'unit_test.json')
-dic = []
-def retrieve_json():
-        global dic
-        with open('unit-test.json', 'r') as f:
+def init_query():
+        base_uri = "https://api.edamam.com/"
+        search_query = "search?q="
+        response = input("what'cha want m8?: ").replace(' ', '%20')
+        url = base_uri + search_query + response + "&to=1" +"&app_id=" + config.APP_ID + "&app_key=" + config.RECIPE_SEARCH_APP_KEY
+        request = requests.get(url)
+        print(str(request.status_code) + "\n")
+        print(url)
+        ret = request.json()
+        store_json(ret, 'raw_query.json')
+def retrieve_json(string):
+        dic = []
+        # 'unit-test.json'
+        with open(string, 'r') as f:
                 dic = json.load(f)
-retrieve_json()
+        return dic
 def parse_dic(dic):
-        json_dic = {}
+        diks = []
+        all_dic = {dic['q']:[]}
         hits = dic['hits']
-        # we want url, image, ingredientlines, label
         for x in hits:
+                json_dic = {}
                 recipe = x['recipe']
-                json_dic[recipe['label']] = [recipe['image'], recipe['ingredientLines'], recipe['url']]
-        return json_dic
+                print("test", recipe )
+                json_dic = { "name": recipe['label'], "img": recipe['image'], "ing": recipe['ingredientLines'], 'url': recipe['url']}
+                all_dic[dic['q']].append(json_dic)
+        try:
+                superset = retrieve_json('parsed_dic.json')
+                if dic['q'] not in superset:
+                        superset[dic['q']] = all_dic[dic['q']]
+                else:
+                        superset[dic['q']] = superset[dic['q']].append(all_dic[dic['q']])
+                return superset
+        except:
+                return all_dic
+init_query()
+dic = retrieve_json('raw_query.json')
 parsed_dic = parse_dic(dic)
-store_json(parsed_dic, 'parsed_dic')
+store_json(parsed_dic, 'parsed_dic.json')
 
