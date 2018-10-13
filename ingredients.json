@@ -1,0 +1,15 @@
+{
+  "water": {
+    "unit": "ml"
+  },
+  "yoghurt": {
+    "unit": "g",
+    "size": 500,
+    "types": {
+      "plain": {},
+      "vanilla": {},
+      "coconut": {}
+    },
+    "default": "plain"
+  }
+}
