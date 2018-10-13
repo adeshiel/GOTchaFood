@@ -4,17 +4,16 @@ using System.Collections.Generic;
 
 public class RecItem {
 	public string name;
-	public string group;
+	public string image;
 	public string ingredients;
-	public int cooktime;
+	public string lnk;
 	public double pullprob;
 
-	public RecItem (string Name, string Ing, int Time, string Fam, double probab){
+	public RecItem (string Name, string Img, string link, string[] Ing){
 		name = Name;
+		image = Img;
+		lnk = link
 		ingredients = Ing;
-		cooktime = Time;
-		group = Fam;
-		pullprob = probab;
 
 		}
 
