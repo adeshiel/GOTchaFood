@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class InventoryItems : MonoBehaviour {
 	Dropdown f_Dropdown;
-	List<string> headers = new List<string>(){"asparagus", "baking-powder", "bananas", "basil", "broccoli", "butter", "cheese", "chicken", "chilli", "chocolate", "clementines", "coconut-milk", "coffee-powder", "couscous", "creme-fraiche", "dip", "eggs", "falafels", "fish-sauce", "flour", "garlic", "lemon-grass", "lettuce", "lime", "lime-juice", "lime-leaves", "marinade", "mushrooms", "onions", "oregano", "pepper", "pomegranate", "prawns", "salmon", "stock", "sugar", "tom-yum-paste", "tomatoes", "turkey","vanilla", "vinegar", "water", "yoghurt"};
+
 	// Use this for initialization
 	void Start () {
 		var current_list = KeepProb.foods.ToArray();
@@ -34,9 +34,7 @@ public class InventoryItems : MonoBehaviour {
 	void Update () {
 
 		var cur_item = KeepProb.foods.ElementAt(f_Dropdown.value);
-		GameObject.Find("Detailed Text").GetComponent<Text>().text = "Main ingredient: " + cur_item.ingredients + "\n"
-		 																															+ "Cook time: " + cur_item.cooktime + "\n"
-																																	+ "Usual meal: " + cur_item.group;
+		GameObject.Find("Detailed Text").GetComponent<Text>().text = "Main ingredient: " + cur_item.ing;
 
 	}
 }

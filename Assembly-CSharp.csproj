@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\ButtonTesting.cs" />
      <Compile Include="Assets\Scripts\ChangeScene.cs" />
      <Compile Include="Assets\Scripts\InventoryItems.cs" />
+     <Compile Include="Assets\Scripts\JSHolder.cs" />
      <Compile Include="Assets\Scripts\KeepProb.cs" />
      <Compile Include="Assets\Scripts\RecItem.cs" />
      <Compile Include="Assets\Scripts\TouchScript.cs" />

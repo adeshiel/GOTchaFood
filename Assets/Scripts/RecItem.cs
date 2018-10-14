@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// [Serializable]
+[System.Serializable]
 public class RecItem {
 	public string name;
 	public string img;
