@@ -9,7 +9,7 @@ public static class KeepProb {
 	public static List<float> probList = new List<float>();
 	public static List<RecItem> foods = new List<RecItem>();
 	public static List<string> foodnames = new List<string>();
-
+	public static List<string> categories = new List<string>(){"asparagus", "baking-powder", "bananas", "basil", "broccoli", "butter", "cheese", "chicken", "chilli", "chocolate", "clementines", "coconut-milk", "coffee-powder", "couscous", "creme-fraiche", "dip", "eggs", "falafels", "fish-sauce", "flour", "garlic", "lemon-grass", "lettuce", "lime", "lime-juice", "lime-leaves", "marinade", "mushrooms", "onions", "oregano", "pepper", "pomegranate", "prawns", "salmon", "stock", "sugar", "tom-yum-paste", "tomatoes", "turkey", "vanilla", "vinegar", "water", "yoghurt"};
 
 	public static float Probability {
 		get {
